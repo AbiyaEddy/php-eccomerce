@@ -22,7 +22,6 @@ $productquery->execute();
 
 $product= $productquery->fetch(PDO::FETCH_ASSOC);
 
-
 if(!$product)
 {
     $_SESSION['message']="Product does not exist";
@@ -33,28 +32,47 @@ if(!$product)
 
 ?>
 
+<section class="py-5">
+            <div class="container product-data px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img src="uploads/<?=$product['product_image'];?>" width="500" height="500" alt="<?=$product['product_name']?>"|></div>
+                    <div class="col-md-6">
+                        <div class="small mb-1">SKU: BST-498</div>
+                        <h1 class="display-5 fw-bolder">Product Details</h1>
+                        <div class="fs-5 mb-5">
+                            <!-- <span class="text-decoration-line-through">$45.00</span> -->
+                            <span>Price:<?=$product['product_price']?>Ksh</span>
+                        </div>
+                        <p class="lead"><?=$product['product_details']?></p>
 
-
-<div class="product content-wrapper">
-    <img src="uploads/<?=$product['product_image']?>" width="500" height="500" alt="<?=$product['product_name']?>">
-    <div>
-        <h1 class="name"><?=$product['product_name']?></h1>
-        <span class="price">
-            <!-- &dollar;<?=$product['product_price']?>
-            <?php if ($product['rrp'] > 0): ?>
-            <span class="rrp">&dollar;<?=$product['rrp']?></span>
-            <?php endif; ?> -->
-        </span>
-        <form action="index.php?page=cart" method="post">
-            <input type="number" name="quantity" value="1" min="1" max="<?=$product['product_quantity']?>" placeholder="Quantity" required>
-            <input type="hidden" name="product_id" value="<?=$product['id']?>">
-            <input type="submit" value="Add To Cart">
-        </form>
-        <div class="description">
-            <?=$product['product_details']?>
-        </div>
-    </div>
-</div>
+                        <div class="row py-2">
+                            <div class="col-md-4">
+                              <div class="input-group mb-3 " style="width:100px">
+                            <div class="input-group-prepend">
+                                <button class="input-group-text decrement-btn">-</button>
+                            </div>
+                            <input type="text" class="form-control bg-white input-quantity" value="1" disabled>
+                            <div class="input-group-append">
+                                <button class="input-group-text increment-btn">+</button>
+                            </div>
+                            </div>
+                                                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary px-4 addToCartBtn" value="<?=$product['id'];?>" type="button">Add to cart</button>
+                  
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-danger px-4" type="button">Add to Wishlist</button>
+                            </div>
+                           
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
 <?php include('./includes/footer.php'); ?>

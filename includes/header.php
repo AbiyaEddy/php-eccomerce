@@ -9,6 +9,8 @@
     <title>Home Page - Shopper</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 

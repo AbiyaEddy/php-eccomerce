@@ -72,6 +72,8 @@
     </footer>
     <!-- ========================= FOOTER END // ========================= -->
 
+    <script src="js/custom.js"></script>
+
 </body>
 
 </html>
