@@ -6,6 +6,7 @@ session_start();
 <?php include('./includes/header.php'); ?>
 <?php include('./includes/navbar.php'); ?>
 
+<script src="js/custom.js"></script>
 <?php include_once(__DIR__ . "/includes/config.php");?>
 
 
@@ -60,6 +61,7 @@ session_start();
                     </div>
 
                     
+                    
                 </div>
                 <?php }?>
             </div>
@@ -76,7 +78,7 @@ session_start();
             </header>
            
             <div class="row">
-            <?php 
+                 <?php 
                 $queryproducts =$dbcon->prepare("SELECT * FROM `products` WHERE featured='1'LIMIT 4");
                 $queryproducts->execute();
                 $queryresults=$queryproducts->fetchAll(PDO::FETCH_OBJ);
@@ -85,32 +87,28 @@ session_start();
                 ?>
                 <div class="col-md-3">
                     <figure class="card card-product">
-                        <a href='productview.php?id=<?= $prodresults->id?>'class="text-dark">
                              <div class="img-wrap "><img src="<?="uploads/".$prodresults->product_image?>"></div>
                             <figcaption class="info-wrap">
                                 <h4 class="title"><?=$prodresults->product_name?></h4>
                                 <p class="desc"><?=substr($prodresults->product_details,0,30)?></p>
-                                <div class="rating-wrap">
-                                    <ul class="rating-stars">
-                                        <li style="width:80%" class="stars-active">
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                        </li>
-                                    </ul>
-                                    <div class="label-rating">132 reviews</div>
-                                </div>
                             <!-- rating-wrap.// -->
                             </figcaption>
                             <div class="bottom-wrap">                                    
                                 
                                 <div class="price-wrap h5">
                                     <span class="price-new">$<?=$prodresults->product_price?></span>
+                                    <div>
+                                    <button class="btn btn-primary addToCartBtn" value="<?=$prodresults->id ?>">Add to Cart</button>
+
+                                    <a href='productview.php?id=<?= $prodresults->id?>' >
+                                    <button class="btn btn-info">View Details</button></a>
+                                    
+                                    </div>
+                                   
                                 </div>
                             <!-- price-wrap.// -->
                             </div>
-                  </a>
+            
                         <!-- bottom-wrap.// -->
                         
                     </figure>
@@ -127,6 +125,7 @@ session_start();
         <!-- container .//  -->
     </section>
 
+    <!--test-->
     <!-- ========================= SECTION ITEMS ========================= -->
     <section class="section-request bg padding-y-sm">
         <div class="container">
@@ -144,39 +143,39 @@ session_start();
                 <div class="col-md-3">
                   
                         <figure class="card card-product">
-                        <a href='productview.php?id=<?= $prodrecent->id?>'class="text-dark">
+                        
                             <div class="img-wrap"><img src="<?="uploads/".$prodrecent->product_image?>"></div>
                             <figcaption class="info-wrap">
                                 <h4 class="title"><?= $prodrecent->product_name?></h4>
                                 <p class="desc"><?=substr($prodrecent->product_details,0,30)?></p>
-                                <div class="rating-wrap">
-                                    <ul class="rating-stars">
-                                        <li style="width:80%" class="stars-active">
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                        </li>
-                                    </ul>
-                                    <div class="label-rating">132 reviews</div>
-                                </div>
+                      
                                 <!-- rating-wrap.// -->
                             </figcaption>
                             <div class="bottom-wrap">
                                 <div class="price-wrap h5">
                                     <span class="price-new">$<?= $prodrecent->product_price?></span> <del class="price-old">$1980</del>
+                                    <div>
+                                    <button class="btn btn-primary addToCartBtn" value="<?=$prodrecent->id;?>">Add to Cart</button>
+
+                                    <a href='productview.php?id=<?= $prodrecent->id?>' >
+                                    <button class="btn btn-info">View Details</button></a>
+                                    
+                                    </div>
+                                   
+                              
                                 </div>
                                 <!-- price-wrap.// -->
                             </div>
                             <!-- bottom-wrap.// -->
-                            </a>
+                          
                         </figure>
                 </div>
 
               <?php }?>
              </div>
              </div>
-    </section>
+    
+            </section>
 
     <!-- ========================= Subscribe ========================= -->
     <section class="section-subscribe bg-primary padding-y-lg">
@@ -207,5 +206,15 @@ session_start();
 
 
     <!-- ========================= Subscribe .END// ========================= -->
-    
+    <script>
+
+                    
+function addToCartClicked(event){
+    var button = event.target
+    var cardProduct = button.parentElement
+    var title = cardProduct.getElementsByClassName('desc')[0].innerText
+    console.log(title);
+}
+
+    </script>
    <?php include('includes/footer.php') ?>

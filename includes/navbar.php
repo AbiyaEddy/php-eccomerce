@@ -1,3 +1,16 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/custom.js"></script>
+</head>
+<body>
+
 <header class="section-header">
         <section class="header-main">
             <div class="container">
@@ -17,7 +30,7 @@
                                 <input type="text" class="form-control" placeholder="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-search"></i>s
+                                        <i class="fa fa-search"></i>
                                     </button>
                                 </div>
                             </div>
@@ -28,11 +41,75 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="widgets-wrap d-flex justify-content-end">
                             <div class="widget-header">
-                                <a href="cart.php" class="icontext">
-                                    <div class="icon-wrap icon-xs bg2 round text-secondary"><i class="fa fa-shopping-cart"></i></div>
+                                <a href="#" class="icontext">
                                     <div class="text-wrap">
-                                        <small>Cart</small>
-                                        <span></span>
+                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <small><i class="fa fa-shopping-cart"></i></small>
+                                            <span></span>
+                                        </button>
+
+  <div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Shopping Cart</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container mt-3">        
+          <table class="table table-hover">
+             <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Image</th>
+                    <th>Product Price</th>
+                    <th>Product Quantity</th>
+                    <th>Action</th>
+                </tr>
+             </thead>
+    <tbody>
+      <tr>
+       <td >John</td>
+        <td class="cartImage">image</td>
+        <td class="cartPrice">Doe</td>
+       
+          <td class="cartQuantity">
+            
+                 <div class="row py-2">
+                            <div class="col-md-4">
+                              <div class="input-group mb-3 " style="width:100px">
+                                <div class="input-group-prepend">
+                                <button class="input-group-text decrement-btn">-</button>
+                            </div>
+                            <input type="text" class="form-control bg-white input-quantity" value="1" disabled>
+                            <div class="input-group-append">
+                                <button class="input-group-text increment-btn">+</button>
+                            </div>
+                            </div>
+                                                            
+                            </div>
+                        </div>
+          </td>
+           <td class="removeButton"><button class="btn btn-danger">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+    <span>Total Amount:</span>
+</div>
+</div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            </div>
+
+    </div>
+  </div>
+</div>
+
                                     </div>
                                 </a>
                             </div>
@@ -45,7 +122,9 @@
                                     <div class="text-wrap">
                                         <small>Log out</small>
                                         <span></span>
+                                        <?php  echo 'Welcome '.$_SESSION["username"]; ?>
                                     </div>
+                                  
                                 </a>
                             </div>
                             <?php }else{ ?>

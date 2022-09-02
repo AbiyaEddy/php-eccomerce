@@ -12,9 +12,9 @@
                     <div class="col-lg-6 col-sm-6">
                         <form action="#" class="search-wrap">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" name="query" class="form-control" placeholder="Search">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary" type="submit" value="search">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </div>
